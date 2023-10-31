@@ -73,7 +73,7 @@ def set_limit(low):
 def get_valid_number(prompt):
     """Validator a number."""
     is_valid = False
-    while is_valid:
+    while not is_valid:
         try:
             number = int(input(prompt))
             is_valid = True
