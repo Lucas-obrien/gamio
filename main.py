@@ -14,16 +14,16 @@ DEFAULT_HIGH = 10
 
 def main():
     """Run a menu-driven guessing game with option to change high limit."""
-    high = DEFAULT_HIGH
+    high_number = DEFAULT_HIGH
     number_of_games = 0
     print("Welcome to the guessing game")
     choice = input(MENU).upper()
     while choice != "Q":
         if choice == "P":
-            play(DEFAULT_LOW, high)
+            play(DEFAULT_LOW, high_number)
             number_of_games += 1
         elif choice == "S":
-            high = set_limit(DEFAULT_LOW)
+            high_number = set_limit(DEFAULT_LOW)
         elif choice == "H":
             high_scores()
         else:
@@ -40,12 +40,12 @@ def save_score(number_of_guesses, low, high):
 
 def play(low, high):
     """Play guessing game using current low and high values."""
-    secret = random.randint(low, high)
+    secret_number = random.randint(low, high)
     number_of_guesses = 1
     guess = int(input(f"Guess a number between {low} and {high}: "))
-    while guess != secret:
+    while guess != secret_number:
         number_of_guesses += 1
-        if guess < secret:
+        if guess < secret_number:
             print("Higher")
         else:
             print("Lower")
