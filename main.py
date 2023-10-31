@@ -6,6 +6,8 @@ This is for a code review and refactoring exercise
 import math
 import random
 
+MENU = "(P)lay, (S)et limit, (H)igh scores, (Q)uit: "
+
 DEFAULT_LOW = 1
 DEFAULT_HIGH = 10
 
@@ -15,7 +17,7 @@ def main():
     high = DEFAULT_HIGH
     number_of_games = 0
     print("Welcome to the guessing game")
-    choice = input("(P)lay, (S)et limit, (H)igh scores, (Q)uit: ").upper()
+    choice = input(MENU).upper()
     while choice != "Q":
         if choice == "P":
             play(DEFAULT_LOW, high)
@@ -26,12 +28,12 @@ def main():
             high_scores()
         else:
             print("Invalid choice")
-        choice = input("(P)lay, (S)et limit, (H)igh scores, (Q)uit: ").upper()
+        choice = input(MENU).upper()
     print(f"Thanks for playing ({number_of_games} times)!")
 
 
 def save_score(number_of_guesses, low, high):
-    """Save score to scores.txt with range"""
+    """Save score to scores.txt with range."""
     with open("scores.txt", "a", encoding="UTF-8") as outfile:
         print(f"{number_of_guesses}|{high - low + 1}", file=outfile)
 
