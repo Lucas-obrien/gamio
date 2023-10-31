@@ -11,7 +11,7 @@ DEFAULT_HIGH = 10
 
 
 def main():
-    """Menu-driven guessing game with option to change high limit."""
+    """Run a menu-driven guessing game with option to change high limit."""
     low = DEFAULT_LOW
     high = DEFAULT_HIGH
     number_of_games = 0
@@ -70,6 +70,7 @@ def set_limit(low):
 
 
 def get_valid_number(prompt):
+    """Validator a number."""
     is_valid = False
     while is_valid:
         try:
@@ -86,6 +87,7 @@ def is_good_score(number_of_guesses, score_range):
 
 
 def high_scores():
+    """Read in scores and display with an ! if it is a good score"""
     scores = []
     with open("scores.txt", encoding="UTF-8") as in_file:
         for line in in_file:
