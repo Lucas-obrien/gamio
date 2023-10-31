@@ -89,15 +89,21 @@ def is_good_score(number_of_guesses, score_range):
 
 def high_scores():
     """Read in scores and display with an ! if it is a good score"""
+    scores = load_score()
+    scores.sort()
+    for score in scores:
+        marker = "!" if is_good_score(score[0], score[1]) else ""
+        print(f"{score[0]} ({score[1]}) {marker}")
+
+
+def load_score():
+    """Load a list of scores."""
     scores = []
     with open("scores.txt", encoding="UTF-8") as in_file:
         for line in in_file:
             line = line.split("|")
             scores.append((int(line[0]), int(line[1])))
-    scores.sort()
-    for score in scores:
-        marker = "!" if is_good_score(score[0], score[1]) else ""
-        print(f"{score[0]} ({score[1]}) {marker}")
+    return scores
 
 
 main()
